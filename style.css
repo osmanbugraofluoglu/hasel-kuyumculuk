@@ -1,4 +1,4 @@
-/* --- TEMEL DEĞİŞKENLER (Renk Paleti) --- */
+/* --- TEMEL DEĞİŞKENLER & SIFIRLAMA --- */
 :root {
     --bg-dark: #111111;
     --bg-darker: #0a0a0a;
@@ -29,16 +29,15 @@ h1, h2, h3 {
 /* --- HEADER / NAVBAR --- */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Logo sola, menü sağa */
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem 7%; /* Yanlardan %5 boşluk bırakır */
+    padding: 1rem 7%;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
 }
 
-/* JS ile sayfa kaydırılınca eklenecek sınıf */
 .navbar.scrolled {
     background: rgba(10, 10, 10, 0.95);
     padding: 15px 50px;
@@ -77,7 +76,16 @@ h1, h2, h3 {
     color: var(--gold);
 }
 
-/* --- HERO SECTION --- */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--gold);
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+/* --- HERO SECTION (GİRİŞ EKRANI) --- */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -85,8 +93,8 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* Temsili arka plan resmi - Daha sonra değiştireceğiz */
-    background: url('https://images.unsplash.com/photo-1599643478514-4a820cbf311e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+    /* Yerel fotoğrafımız devrede */
+    background: url('assets/hasır-takım-2.jpeg') center/cover no-repeat;
 }
 
 .hero-overlay {
@@ -95,12 +103,13 @@ h1, h2, h3 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Yazıların okunması için siyah filtre */
+    background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9));
+    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     max-width: 800px;
     padding: 0 20px;
 }
@@ -135,6 +144,8 @@ h1, h2, h3 {
     background: var(--gold);
     color: var(--bg-dark);
 }
+
+/* --- HAKKIMIZDA (ABOUT) --- */
 .about-section {
     padding: 100px 5%;
     background-color: var(--bg-dark);
@@ -182,7 +193,6 @@ h1, h2, h3 {
 
 .about-image {
     flex: 1;
-    /* Resmi kutunun tam ortasına almak için bu iki satırı ekliyoruz: */
     display: flex; 
     justify-content: center;
 }
@@ -191,30 +201,20 @@ h1, h2, h3 {
     max-width: 350px; 
     width: 100%;
     height: auto;
-    
-    /* Yeni Çerçeve ve Geçiş Ayarları */
-    border-radius: 8px; /* Köşelere çok hafif, asil bir yumuşaklık */
-    border: 2px solid var(--gold); /* İnce, zarif altın sarısı çerçeve */
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15); /* Siyah zeminle kaynaşmasını sağlayan sarımsı, yumuşak gölge */
-    
-    filter: grayscale(20%); /* Başlangıçta çok hafif ağırbaşlı bir ton */
+    border-radius: 8px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+    filter: grayscale(20%);
     transition: all 0.5s ease;
 }
 
-/* Üzerine Fareyle Gelince Şov Yapsın */
 .about-image img:hover { 
-    filter: grayscale(0%); /* Kendi canlı renklerine dönsün */
-    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.35); /* Gölge (ışık) iyice parlasın */
-    transform: translateY(-5px); /* Tablo gibi hafifçe havaya kalksın */
+    filter: grayscale(0%);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.35);
+    transform: translateY(-5px);
 }
 
-/* Mobil Uyum */
-@media screen and (max-width: 768px) {
-    .about-container { flex-direction: column; text-align: center; }
-    .about-features { justify-content: center; }
-}
-
-/* --- KATEGORİLER (Glassmorphism & Hover) --- */
+/* --- KATEGORİLER --- */
 .categories-section {
     padding: 100px 5%;
     background-color: var(--bg-darker);
@@ -252,8 +252,9 @@ h1, h2, h3 {
     cursor: pointer;
     transition: transform 0.3s ease;
 }
+
 .category-card:hover {
-    transform: scale(1.03); /* Üstüne gelince hafifçe büyür */
+    transform: scale(1.03);
 }
 
 .category-card img {
@@ -264,10 +265,9 @@ h1, h2, h3 {
 }
 
 .category-card:hover img {
-    transform: scale(1.1); /* Hover olunca resim büyür */
+    transform: scale(1.1);
 }
 
-/* Glassmorphism Etiketi */
 .glass-label {
     position: absolute;
     bottom: 20px;
@@ -279,7 +279,6 @@ h1, h2, h3 {
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     transition: all 0.4s ease;
-
     height: 100px;
     display: flex;
     flex-direction: column;
@@ -297,7 +296,68 @@ h1, h2, h3 {
     color: var(--gold);
     letter-spacing: 1px;
 }
-/* --- INSTAGRAM Ürünler --- */
+
+/* --- GALERİ MODALI --- */
+.gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    overflow-y: auto;
+}
+
+.gallery-modal.show {
+    display: block;
+}
+
+.modal-content {
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+#gallery-title { 
+    color: #d4af37; 
+    margin-bottom: 30px; 
+    font-family: 'Playfair Display'; 
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px; 
+    padding: 20px 0;
+}
+
+.gallery-grid img {
+    width: 280px;  
+    height: 380px; 
+    object-fit: cover; 
+    border-radius: 8px;
+    border: 2px solid var(--gold);
+    background: #1a1a1a;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-grid img:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+}
+
+.close-gallery {
+    position: absolute;
+    top: 20px; right: 35px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* --- INSTAGRAM --- */
 .instagram-section {
     padding: 100px 5%;
     background-color: var(--bg-dark);
@@ -315,7 +375,6 @@ h1, h2, h3 {
     margin: 0 auto;
 }
 
-/* API eklenene kadar görünecek geçici kutu */
 .ig-placeholder {
     background: rgba(255, 255, 255, 0.03);
     border: 1px dashed rgba(212, 175, 55, 0.3);
@@ -330,40 +389,51 @@ h1, h2, h3 {
     color: var(--gold);
     margin-bottom: 20px;
 }
-/* --- INSTAGRAM'A YÖNLENDİRME BUTONU --- */
+
 .ig-button-container {
     text-align: center;
-    margin-top: 10px; /* Elfsight kutusu ile arasındaki mesafe */
+    margin-top: 10px;
     position: relative;
-    z-index: 10; /* Maskenin altında ezilmemesi için */
+    z-index: 10;
 }
 
 .ig-redirect-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px; /* İkon ile yazı arasındaki boşluk */
+    gap: 10px;
     padding: 15px 40px;
-    border-radius: 30px; /* Oval, modern görünüm */
-    background: rgba(212, 175, 55, 0.05); /* Çok hafif saydam altın arka plan */
+    border-radius: 30px;
+    background: rgba(212, 175, 55, 0.05);
     font-weight: 500;
 }
 
 .ig-redirect-btn i {
-    font-size: 1.3rem; /* Instagram logosunu biraz büyütüyoruz */
+    font-size: 1.3rem;
 }
 
 .ig-redirect-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); /* Üzerine gelince altın rengi parlama */
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
 }
 
-.btn-small {
-    padding: 10px 25px;
-    font-size: 0.9rem;
-    margin-top: 20px;
+/* --- ELFSIGHT YAZISINI GİZLEME --- */
+.elfsight-app-28646ea9-2971-44d9-b015-71b9309a4d1a {
+    position: relative !important;
 }
 
-/* --- FOOTER (İLETİŞİM) --- */
+.elfsight-app-28646ea9-2971-44d9-b015-71b9309a4d1a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--bg-dark);
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+/* --- FOOTER --- */
 .footer-section {
     background-color: var(--bg-darker);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -480,174 +550,13 @@ h1, h2, h3 {
     background-color: #128c7e;
 }
 
-/* WhatsApp Butonu için Kalp Atışı Animasyonu (Dikkat Çekmesi İçin) */
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
     70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
-/* --- ELFSIGHT "FREE WIDGET" YAZISINI SANSÜRLEME (KESİN ÇÖZÜM) --- */
 
-.elfsight-app-28646ea9-2971-44d9-b015-71b9309a4d1a {
-    position: relative !important;
-}
-
-/* Elfsight kutusunun en altına, arka planla aynı renkte bir şerit çekiyoruz */
-.elfsight-app-28646ea9-2971-44d9-b015-71b9309a4d1a::after {
-    content: "";
-    position: absolute;
-    bottom: -5px; /* Tam yazının olduğu hizaya inmesi için */
-    left: 0;
-    width: 100%;
-    height: 60px; /* Yazının yüksekliğini kapatacak kadar kalınlık */
-    background-color: var(--bg-dark); /* Sitenizin antrasit arka plan rengi */
-    z-index: 9999; /* Yazının üstünü örtmesi için */
-    pointer-events: auto; /* Yazıya yanlışlıkla tıklanmasını engeller */
-}
-/* --- MOBİL UYUM VE HAMBURGER MENÜ --- */
-
-/* Normalde (Bilgisayarda) gizli tut */
-.hamburger {
-    display: none;
-    font-size: 1.8rem;
-    color: var(--gold);
-    cursor: pointer;
-    z-index: 1001; /* Menünün en üstünde kalsın */
-    transition: all 0.3s ease;
-}
-
-/* Ekran boyutu 768px'den (tablet/telefon) küçükse devreye gir */
-@media screen and (max-width: 768px) {
-    
-    .hamburger {
-        display: block;
-        margin-left: auto; /* Soldaki tüm boşluğu iterek kendini sağa yaslar */
-        padding: 10px; /* Tıklama alanını rahatlatır */
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%; /* Başlangıçta ekranın sağında gizli tut */
-        width: 70%; /* Menü genişliği */
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.95); /* Koyu cam efekti */
-        backdrop-filter: blur(15px);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: right 0.4s ease-in-out; /* Kayarak gelme animasyonu */
-        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-        z-index: 1000;
-    }
-
-    /* JS ile bu sınıf eklenince menü ekrana girecek */
-    .nav-links.active {
-        right: 0; 
-    }
-
-    .nav-links li {
-        margin: 25px 0;
-    }
-
-    .nav-links a {
-        font-size: 1.2rem;
-    }
-
-    /* Karşılama ekranı (Hero) yazılarını telefonda biraz küçültelim */
-    .hero-content h2 {
-        font-size: 2.5rem;
-    }
-}
-
-.gallery-modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    overflow-y: auto;
-}
-
-/* JS 'show' sınıfını ekleyince galeriyi ekranda görünür yapar */
-.gallery-modal.show {
-    display: block;
-}
-
-.modal-content {
-    margin: 5% auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 1000px;
-    text-align: center;
-}
-
-#gallery-title { color: #d4af37; margin-bottom: 30px; font-family: 'Playfair Display'; }
-
-/* --- GALERİ İÇİ FOTOĞRAF DİZİLİMİ (GÜNCEL) --- */
-.gallery-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* İŞTE BU! Alt satırda tek veya çift kalan fotoğrafı merkeze hizalar */
-    gap: 25px; 
-    padding: 20px 0;
-}
-
-.gallery-grid img {
-    width: 280px;  /* Tüm fotoğrafların genişliği milimi milimine aynı olacak */
-    height: 380px; /* Tüm fotoğrafların yüksekliği aynı olacak (Senin dikey fotoğraflara özel) */
-    object-fit: cover; /* Resmi kesinlikle sündürmez, boşluk bırakmaz, kalıba asilce oturtur */
-    border-radius: 8px;
-    border: 2px solid var(--gold);
-    background: #1a1a1a;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Üzerine gelince lüks bir şekilde havaya kalksın ve parlasın */
-.gallery-grid img:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
-}
-
-.close-gallery {
-    position: absolute;
-    top: 20px; right: 35px;
-    color: #fff;
-    font-size: 40px;
-    cursor: pointer;
-}
-/* --- GİRİŞ (HERO) EKRANI --- */
-.hero-section {
-    height: 100vh; /* Tam ekran yapar */
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    /* Geçici altın konseptli kapak görseli */
-background: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-}
-
-/* Üzerine attığımız "Siyah Cam" efekti (Yazıların okunmasını sağlar) */
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)); /* Üstten alta koyulaşan lüks gölge */
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2; /* Yazıların gölgenin üstünde kalması için */
-    max-width: 800px;
-    padding: 0 20px;
-}
-/* --- KAYDIRMA (SCROLL REVEAL) ANİMASYONU --- */
+/* --- SCROLL (KAYDIRMA) ANİMASYONU --- */
 .reveal {
     opacity: 0;
     transform: translateY(50px);
@@ -657,7 +566,8 @@ background: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ix
     opacity: 1;
     transform: translateY(0);
 }
-/* --- ÇEREZ UYARI ÇUBUĞU (KVKK) --- */
+
+/* --- ÇEREZ UYARISI (KVKK) --- */
 .cookie-banner {
     position: fixed;
     bottom: 0;
@@ -671,15 +581,12 @@ background: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ix
     justify-content: space-between;
     align-items: center;
     z-index: 9999;
-    font-family: 'Montserrat', sans-serif;
     font-size: 0.85rem;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.8);
-    /* Ekranın altında gizli beklemesi için: */
     transform: translateY(100%); 
     transition: transform 0.6s ease-in-out;
 }
 
-/* JavaScript bu sınıfı ekleyince yukarı süzülecek */
 .cookie-banner.show {
     transform: translateY(0);
 }
@@ -690,48 +597,31 @@ background: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ix
     padding-right: 20px;
 }
 
-/* Linkin rengini altın yapalım ki tıklanabilir olduğu anlaşılsın */
 .cookie-banner p a {
     color: #d4af37;
     text-decoration: underline;
     font-weight: 500;
 }
 
-.cookie-banner .btn-small {
-    padding: 10px 25px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
-/* Telefondan girildiğinde alt alta düzgün dursun */
-@media screen and (max-width: 768px) {
-    .cookie-banner {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px 15px;
-    }
-    .cookie-banner p {
-        padding-right: 0;
-        margin-bottom: 15px;
-        line-height: 1.6;
-    }
-}
-/* --- Çerez Butonları Konumlandırma --- */
 .cookie-buttons {
     display: flex;
     gap: 10px; 
     align-items: center;
 }
 
-/* Zorunlu Çerez (Hayalet) Butonu */
+.btn-small {
+    padding: 10px 25px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
 .ghost-btn {
     background-color: transparent;
     color: #888;
     border: 1px solid #555;
     transition: all 0.3s ease;
     border-radius: 3px;
-    white-space: nowrap;
 }
 
 .ghost-btn:hover {
@@ -740,13 +630,81 @@ background: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ix
     background-color: rgba(255,255,255,0.1);
 }
 
-/* Mobil Ekran Uyum (Yazı uzun olduğu için alt alta dizeriz) */
+/* ========================================= */
+/* --- MOBİL UYUM (TÜM MEDIA QUERY'LER) --- */
+/* ========================================= */
+
 @media screen and (max-width: 768px) {
+    /* Navbar ve Menü */
+    .hamburger {
+        display: block;
+        margin-left: auto;
+        padding: 10px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(15px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0; 
+    }
+
+    .nav-links li {
+        margin: 25px 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+
+    /* Hero Section */
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Hakkımızda */
+    .about-container { 
+        flex-direction: column; 
+        text-align: center; 
+    }
+    .about-features { 
+        justify-content: center; 
+    }
+
+    /* Çerez Uyarıları */
+    .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+    }
+    
+    .cookie-banner p {
+        padding-right: 0;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
     .cookie-buttons {
-        flex-direction: column-reverse; /* Zorunlu olan altta, Tümünü kabul et üstte dursun */
+        flex-direction: column-reverse;
         width: 100%;
     }
-    .cookie-buttons button {
+    
+    .cookie-buttons button,
+    .cookie-buttons .btn-small {
         width: 100%;
         padding: 12px;
     }

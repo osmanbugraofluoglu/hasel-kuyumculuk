@@ -55,9 +55,10 @@ const galleryData = {
     'hasir': {
         title: 'Trabzon Hasır Setleri',
         images: [
-            'assets/hasir-1.jpg',
-            'assets/hasir-2.jpg',
-            'assets/hasir-3.jpg'
+            'assets/hasir-takım-1.jpeg',
+            'assets/hasir-takım-2.jpeg',
+            'assets/hasir-3-takım-3.jpeg',
+            'assets/hasir-4-takım-4.jpeg'
         ]
     },
     'kelepce': {
