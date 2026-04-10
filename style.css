@@ -13,17 +13,20 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif; 
 }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-light);
-    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6; 
+    -webkit-font-smoothing: antialiased; 
 }
 
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
+h1, h2, h3, h4, .premium-font {
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 600; 
+    letter-spacing: 1px;
 }
 
 /* --- HEADER / NAVBAR --- */
@@ -93,7 +96,6 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* Yerel fotoğrafımız devrede */
     background: url('assets/hasır-takım-2.jpeg') center/cover no-repeat;
 }
 
@@ -693,22 +695,22 @@ h1, h2, h3 {
 
     /* --- FOOTER MOBİL DÜZELTME --- */
     .footer-container {
-        grid-template-columns: 1fr; /* 3 eşit parçayı iptal et, tek geniş sütun yap */
-        text-align: center; /* Tüm metinleri ortala */
-        gap: 40px; /* Kutular arasına nefes alacak boşluk bırak */
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        gap: 40px; 
     }
 
     .contact-info p {
-        justify-content: center; /* Telefon ve adres ikonlarını merkeze al */
+        justify-content: center; 
     }
 
     .hours-box li {
-        justify-content: center; /* Saatleri merkeze al */
-        gap: 15px; /* Gün ile saat arasına boşluk at */
+        justify-content: center; 
+        gap: 15px;
     }
     
     .map-box iframe {
-        height: 250px; /* Mobilde harita çok devasa olmasın, zarif dursun */
+        height: 250px;
     }
 
     /* Çerez Uyarıları */
