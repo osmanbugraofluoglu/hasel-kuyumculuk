@@ -437,22 +437,27 @@ h1, h2, h3 {
 .footer-section {
     background-color: var(--bg-darker);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 60px;
+    padding: 60px 5% 0; /* Üstten 60px, Yanlardan %5 boşluk ver, Alt 0 */
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* İŞTE SİHİRLİ DOKUNUŞ BURASI: Ne olursa olsun 3 eşit sütun yap */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 40px;
-    padding: 0 5% 40px;
+    padding: 40px;
 }
 
 .footer-box h3 {
     color: var(--text-light);
     font-size: 1.4rem;
     margin-bottom: 25px;
+}
+.footer-bottom strong {
+    color: var(--gold);
+    font-weight: 500;
 }
 
 .info-box .slogan {
