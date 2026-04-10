@@ -690,6 +690,26 @@ h1, h2, h3 {
         justify-content: center; 
     }
 
+    /* --- FOOTER MOBİL DÜZELTME --- */
+    .footer-container {
+        grid-template-columns: 1fr; /* 3 eşit parçayı iptal et, tek geniş sütun yap */
+        text-align: center; /* Tüm metinleri ortala */
+        gap: 40px; /* Kutular arasına nefes alacak boşluk bırak */
+    }
+
+    .contact-info p {
+        justify-content: center; /* Telefon ve adres ikonlarını merkeze al */
+    }
+
+    .hours-box li {
+        justify-content: center; /* Saatleri merkeze al */
+        gap: 15px; /* Gün ile saat arasına boşluk at */
+    }
+    
+    .map-box iframe {
+        height: 250px; /* Mobilde harita çok devasa olmasın, zarif dursun */
+    }
+
     /* Çerez Uyarıları */
     .cookie-banner {
         flex-direction: column;
