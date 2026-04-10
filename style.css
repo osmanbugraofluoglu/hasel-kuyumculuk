@@ -447,7 +447,7 @@ h1, h2, h3 {
     /* İŞTE SİHİRLİ DOKUNUŞ BURASI: Ne olursa olsun 3 eşit sütun yap */
     grid-template-columns: repeat(3, 1fr); 
     gap: 40px;
-    padding: 40px;
+    padding-bottom: 40px;
 }
 
 .footer-box h3 {
@@ -506,6 +506,7 @@ h1, h2, h3 {
 
 .hours-box ul {
     list-style: none;
+    padding: 0;
 }
 
 .hours-box li {
@@ -733,4 +734,10 @@ h1, h2, h3 {
         width: 100%;
         padding: 12px;
     }
+
+    .social-links {
+        justify-content: center; 
+    }
 }
+
+    
